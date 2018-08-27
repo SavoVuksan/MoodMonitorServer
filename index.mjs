@@ -50,5 +50,71 @@ app.post('/saveEntry', (req,res) =>{
 });
 
 app.get('/goodDayCount',(req,res) =>{
-   connection.find({}).project()
+   connection.aggregate([
+       {
+           '$match': {
+               'posEmotions': {
+                   '$gt': []
+               },
+               'negEmotions': {
+                   '$lte': []
+               }
+           }
+       }, {
+           '$count': 'posEmotions'
+       },
+       {
+           $project: {
+               'posDays': '$posEmotions'
+           }
+       }
+   ],null).toArray((err, elements) =>{
+        console.log(elements);
+        res.send(elements[0]);
+    });
+});
+
+app.get('/badDayCount',(req,res) =>{
+    connection.aggregate([
+        {
+            '$match': {
+                'negEmotions': {
+                    '$gt': []
+                },
+                'posEmotions': {
+                    '$lte': []
+                }
+            }
+        }, {
+            '$count': 'negEmotions'
+        },
+        {
+            $project: {
+                'negDays': '$negEmotions'
+            }
+        }
+    ],null).toArray((err, elements) =>{
+        console.log(elements);
+        res.send(elements[0]);
+    });
+});
+app.get('/lastMood',(req,res) =>{
+
+    connection.aggregate([
+        {
+            $match: {
+                date: {
+                    $exists: true
+                }
+            }
+        }, {
+            $sort: {
+                date: -1
+            }
+        }, {
+            $limit: 1
+        }
+    ],null).toArray((err,element) =>{
+       res.send(element[0]);
+    });
 });
