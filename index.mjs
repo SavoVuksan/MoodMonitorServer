@@ -118,3 +118,26 @@ app.get('/lastMood',(req,res) =>{
        res.send(element[0]);
     });
 });
+
+app.get('/getRangeEntries', (req,res) =>{
+    let from = req.query.from;
+    let to = req.query.to;
+    connection.aggregate([
+        {
+            $match: {
+                date: {
+                    $gt: `${from}`
+                },
+                date: {
+                    $lt: `${to}`
+                }
+            }
+        }, {
+            $sort: {
+                date: 1
+            }
+        }
+    ],null).toArray((err,elements) =>{
+        res.send(elements);
+    });
+});
