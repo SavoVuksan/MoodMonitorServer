@@ -141,3 +141,17 @@ app.get('/getRangeEntries', (req,res) =>{
         res.send(elements);
     });
 });
+
+app.get('/searchEntries', (req,res) =>{
+    //console.log(req.body);
+    connection.find({
+        positiveEmotions: {
+            $exists: false
+        },
+        negativeEmotions: {
+            $exists: false
+        }
+    }).project({_id: 0}).toArray((err,elements) =>{
+       res.send(elements);
+    });
+});
