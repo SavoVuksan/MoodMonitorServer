@@ -26,8 +26,45 @@ app.use(
 );
 
 //Passport Middleware
+//configurePassport();
+passport.use(
+    new LocalStrategy({usernameField: 'username', session: true},function(username,password,done){
+
+        User.findOne({username: username}).then( user => {
+
+            if(!user){
+                return done(null,false,{message: 'That email is not registered'});
+
+            }
+
+            //Match password
+            bcrypt.compare(password,user.password, (err, isMatch) =>{
+                if(err) throw err;
+                if(isMatch){
+                    console.log("is match!");
+                    return done(null, user);
+                }else{
+                    return done(null, false,{message: 'Password incorrect'});
+                }
+            });
+
+
+        })
+    })
+);
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 //Init Bodyparser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -79,11 +116,30 @@ app.post('/register', (req,res) =>{
 
 });
 
-app.post('/login', (req, res) =>{
+app.post('/login', (req, res,next) =>{
+
     console.log('login');
-   passport.authenticate('local', function(req2,res2){
-       console.log(req2.user);
-   });
+    passport.authenticate('local',(err, user, info) =>{
+        if(info){console.log(info.message);}
+        if(err) throw err;
+        if(!user){
+           return res.send( "User not registered");
+        }else {
+
+
+            req.logIn(user, err => {
+                if (err) return next(err);
+                return res.send("login successful");
+            });
+        }
+
+
+    })(req, res, next);
+});
+
+app.get('/authRequired',(req,res,next) =>{
+   console.log(`User authenticated? ${req.isAuthenticated()}`);
+   res.send(`Authenticated? ${req.isAuthenticated()}`);
 });
 
 
@@ -98,26 +154,7 @@ app.listen(3000, ()=>{
 });
 
 function configurePassport(){
-    passport.use(
-        new LocalStrategy(function(username,password,done){
 
-            User.findOne({username: username}, function(err, user){
-                if(err) {return done(err);}
-
-                if(!user){
-                    return done(null,false,{message: 'Incorrect username'});
-                }
-
-                if(!user.validPassword(password)){
-                    return done(null,false,{message: 'Incorrect password'});
-                }
-
-                return done(null, user);
-            });
-        })
-    );
-}
-
-function validPassword(){
 
 }
+

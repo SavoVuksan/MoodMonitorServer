@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df3b10c9-aaae-4203-9862-cfd6fa01e51f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/index.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index2.js" beforeDir="false" afterPath="$PROJECT_DIR$/index2.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,7 +20,7 @@
       <file leaf-file-name="index.mjs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.mjs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
+            <state relative-caret-position="17">
               <caret line="105" selection-start-line="105" selection-end-line="115" selection-end-column="3" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
@@ -36,8 +32,17 @@
       <file leaf-file-name="index2.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="114" column="40" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="40" />
+            <state relative-caret-position="241">
+              <caret line="131" column="52" selection-start-line="131" selection-start-column="52" selection-end-line="131" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cookies" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cookies">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -54,15 +59,10 @@
       <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/User.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="170">
+              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/index.js">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -79,6 +79,8 @@
       <find>last</find>
       <find>body</find>
       <find>throw</find>
+      <find>configure</find>
+      <find>session</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,6 +92,7 @@
         <option value="$PROJECT_DIR$/Models/User.js" />
         <option value="$PROJECT_DIR$/index.mjs" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/cookies" />
         <option value="$PROJECT_DIR$/index2.js" />
       </list>
     </option>
@@ -148,11 +151,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.mjs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../authTut/server" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
   </component>
   <component name="RunDashboard">
@@ -213,7 +217,11 @@
       <workItem from="1545291928512" duration="583000" />
       <workItem from="1547017902690" duration="610000" />
       <workItem from="1547105263440" duration="8277000" />
-      <workItem from="1547122251774" duration="3551000" />
+      <workItem from="1547122251774" duration="3767000" />
+      <workItem from="1547624095828" duration="3681000" />
+      <workItem from="1547717692778" duration="5744000" />
+      <workItem from="1547813951168" duration="620000" />
+      <workItem from="1548315369919" duration="5196000" />
     </task>
     <task id="LOCAL-00001" summary="Added DayCount and LastMood functionality">
       <created>1535379744125</created>
@@ -229,32 +237,48 @@
       <option name="project" value="LOCAL" />
       <updated>1535529422999</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Started implementing authorization">
+      <created>1547126772058</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1547126772058</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48251000" />
+    <option name="totallyTimeSpent" value="63708000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18175809" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32896653" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32896653" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32896653" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32896653" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.24017467" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.24017467" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.41339156" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" side_tool="true" weight="0.3295302" />
+      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="3" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -269,7 +293,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added DayCount and LastMood functionality" />
     <MESSAGE value="Added get range entries" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added get range entries" />
+    <MESSAGE value="Started implementing authorization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started implementing authorization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -277,27 +302,19 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index.mjs</url>
           <line>84</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index2.js</url>
-          <line>84</line>
+          <line>120</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="20" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.mjs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2618">
-          <caret line="154" column="26" selection-start-line="154" selection-start-column="26" selection-end-line="154" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.mjs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2618">
@@ -613,9 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -623,16 +637,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/User.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/passport-local/lib/strategy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="290">
+          <caret line="52" column="22" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.mjs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
+        <state relative-caret-position="17">
           <caret line="105" selection-start-line="105" selection-end-line="115" selection-end-column="3" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
@@ -640,10 +654,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Models/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookies">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="114" column="40" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="40" />
+        <state relative-caret-position="241">
+          <caret line="131" column="52" selection-start-line="131" selection-start-column="52" selection-end-line="131" selection-end-column="52" />
         </state>
       </provider>
     </entry>
