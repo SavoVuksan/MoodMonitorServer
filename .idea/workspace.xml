@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df3b10c9-aaae-4203-9862-cfd6fa01e51f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Models/Emotion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Entry.js" afterDir="false" />
+    <list default="true" id="df3b10c9-aaae-4203-9862-cfd6fa01e51f" name="Default" comment="Added several requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index2.js" beforeDir="false" afterPath="$PROJECT_DIR$/index2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,12 +40,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="2158" />
+          <entry key="js" value="2906" />
+          <entry key="txt" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="2158" />
+          <entry key="JavaScript" value="2906" />
+          <entry key="PLAIN_TEXT" value="22" />
         </counts>
       </usages-collector>
     </session>
@@ -69,13 +69,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="201" lean-forward="true" selection-start-line="201" selection-end-line="201" />
+            <state relative-caret-position="256">
+              <caret line="197" column="5" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="5" />
               <folding>
-                <element signature="e#571#663#0" />
                 <element signature="e#825#1417#0" />
                 <element signature="e#1834#2949#0" />
-                <element signature="e#2990#3422#0" />
                 <element signature="e#3467#3590#0" />
                 <element signature="e#3656#3824#0" />
                 <element signature="e#3885#3893#0" />
@@ -199,10 +197,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
-    <option name="width" value="1750" />
-    <option name="height" value="970" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -309,7 +306,7 @@
       <workItem from="1547717692778" duration="5744000" />
       <workItem from="1547813951168" duration="620000" />
       <workItem from="1548315369919" duration="5196000" />
-      <workItem from="1548775427443" duration="8453000" />
+      <workItem from="1548775427443" duration="19368000" />
     </task>
     <task id="LOCAL-00001" summary="Added DayCount and LastMood functionality">
       <created>1535379744125</created>
@@ -332,11 +329,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547126772058</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added several requests">
+      <created>1548783982272</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1548783982272</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72335000" />
+    <option name="totallyTimeSpent" value="83250000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -357,14 +361,14 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23348017" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23348017" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30506608" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32896653" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32896653" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2400881" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.2400881" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -382,7 +386,8 @@
     <MESSAGE value="Added DayCount and LastMood functionality" />
     <MESSAGE value="Added get range entries" />
     <MESSAGE value="Started implementing authorization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started implementing authorization" />
+    <MESSAGE value="Added several requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added several requests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -465,13 +470,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="201" lean-forward="true" selection-start-line="201" selection-end-line="201" />
+        <state relative-caret-position="256">
+          <caret line="197" column="5" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="5" />
           <folding>
-            <element signature="e#571#663#0" />
             <element signature="e#825#1417#0" />
             <element signature="e#1834#2949#0" />
-            <element signature="e#2990#3422#0" />
             <element signature="e#3467#3590#0" />
             <element signature="e#3656#3824#0" />
             <element signature="e#3885#3893#0" />

@@ -12,7 +12,15 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 
 const app = express();
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 //Mongoose
 mongoose.connect('mongodb://localhost/MoodMonitorDB',{useNewUrlParser: true})
@@ -23,9 +31,12 @@ app.use(
     session({
         secret: 'moodmonitor',
         resave: true,
-        saveUninitialized: true
+        saveUninitialized: true,
+        cookie: {httpOnly: true}
     })
 );
+
+
 
 //Passport Middleware
 //configurePassport();
@@ -131,7 +142,7 @@ app.post('/login', (req, res,next) =>{
 
             req.logIn(user, err => {
                 if (err) return next(err);
-                return res.send("login successful");
+                return res.send({text: "success"});
             });
         }
 
@@ -181,6 +192,12 @@ app.get('/getEntries', (req, res, next) =>{
     Entry.find({user: mongoose.Types.ObjectId(req.user.id)}).populate('positiveEmotions').populate('negativeEmotions').then(docs => res.send(docs)).catch(err => console.log(err));
 });
 
+app.get('/getLastEntry', (req, res, next) =>{
+    if(req.user === undefined){res.send({text: "not authorized!"});}else {
+        Entry.findOne({user: req.user.id}).sort({createdOn: -1}).then(doc => res.send(doc)).catch(err => console.log(err));
+    }
+});
+
 // API
 app.post('/api/postEmotion',(req,res,next) =>{
    const {type,name} = req.body;
@@ -190,11 +207,7 @@ app.post('/api/postEmotion',(req,res,next) =>{
 });
 
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+
 
 app.listen(3000, ()=>{
     console.log('Mood Monitor Server running on port 3000!');
