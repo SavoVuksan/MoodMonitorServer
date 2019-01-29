@@ -1,4 +1,6 @@
 const User = require('./Models/User');
+const Emotion = require('./Models/Emotion');
+const Entry = require('./Models/Entry');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -41,7 +43,6 @@ passport.use(
             bcrypt.compare(password,user.password, (err, isMatch) =>{
                 if(err) throw err;
                 if(isMatch){
-                    console.log("is match!");
                     return done(null, user);
                 }else{
                     return done(null, false,{message: 'Password incorrect'});
@@ -69,6 +70,8 @@ app.use(passport.session());
 //Init Bodyparser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// REQUESTS
 
 app.post('/register', (req,res) =>{
     const { username, email, password, password2} = req.body;
@@ -118,7 +121,6 @@ app.post('/register', (req,res) =>{
 
 app.post('/login', (req, res,next) =>{
 
-    console.log('login');
     passport.authenticate('local',(err, user, info) =>{
         if(info){console.log(info.message);}
         if(err) throw err;
@@ -142,6 +144,51 @@ app.get('/authRequired',(req,res,next) =>{
    res.send(`Authenticated? ${req.isAuthenticated()}`);
 });
 
+app.get('/getPositiveEmotions',(req,res,next) =>{
+         Emotion.find({ type: 'positive'}).then((docs) =>{
+             const emotions = docs;
+             res.send(emotions);
+        }).catch((err) => console.log(err));
+});
+
+app.get('/getNegativeEmotions', (req,res,next) =>{
+    Emotion.find({ type: 'negative'}).then((docs) =>{
+        const emotions = docs;
+        res.send(emotions);
+    }).catch(err => console.log(err));
+});
+
+app.post('/saveEntry', (req, res, next) => {
+    const {title, tags, text, positiveEmotions, negativeEmotions} = req.body;
+    const entry = new Entry({
+        title,
+        tags,
+        text,
+        user: mongoose.Types.ObjectId(req.user.id)
+    });
+    if(positiveEmotions) {
+        positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item)));
+    }
+    if(negativeEmotions) {
+        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item)));
+    }
+
+    entry.save();
+    res.send('Entry Saved!');
+});
+
+app.get('/getEntries', (req, res, next) =>{
+    Entry.find({user: mongoose.Types.ObjectId(req.user.id)}).populate('positiveEmotions').populate('negativeEmotions').then(docs => res.send(docs)).catch(err => console.log(err));
+});
+
+// API
+app.post('/api/postEmotion',(req,res,next) =>{
+   const {type,name} = req.body;
+    const emotion = new Emotion({type,name});
+    emotion.save();
+    res.send('Saved Emotion!');
+});
+
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -157,4 +204,6 @@ function configurePassport(){
 
 
 }
+
+
 
