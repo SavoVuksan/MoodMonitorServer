@@ -198,6 +198,23 @@ app.get('/getLastEntry', (req, res, next) =>{
     }
 });
 
+app.get('/goodDayCount',(req,res,next) =>{
+   if(req.user === undefined){res.send({text: 'not authorized!'});}else{
+       Entry.collection.countDocuments({user: mongoose.Types.ObjectId(req.user.id),
+           positiveEmotions: {$exists: true, $ne: []},
+           negativeEmotions: {$exists: true, $size: 0}}).then(c => res.send({goodDayCount: c}));
+   }
+});
+
+app.get('/badDayCount',(req,res,next) =>{
+   if(req.user === undefined){res.send({text: 'not authorized!'});}else{
+       Entry.collection.countDocuments({user: mongoose.Types.ObjectId(req.user.id),
+       negativeEmotions: {$exists: true, $ne: []},
+           positiveEmotions: {$exists: true, $size: 0}
+       }).then(c => res.send({badDayCount: c}));
+   }
+});
+
 // API
 app.post('/api/postEmotion',(req,res,next) =>{
    const {type,name} = req.body;
