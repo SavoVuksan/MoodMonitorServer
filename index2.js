@@ -136,7 +136,7 @@ app.post('/login', (req, res,next) =>{
         if(info){console.log(info.message);}
         if(err) throw err;
         if(!user){
-           return res.send( "User not registered");
+           return res.send( {text: 'User not Registered!'});
         }else {
 
 
@@ -178,14 +178,14 @@ app.post('/saveEntry', (req, res, next) => {
         user: mongoose.Types.ObjectId(req.user.id)
     });
     if(positiveEmotions) {
-        positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item)));
+        positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item.id)));
     }
     if(negativeEmotions) {
-        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item)));
+        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item.id)));
     }
 
     entry.save();
-    res.send('Entry Saved!');
+    res.send({text: 'Entry Saved!'});
 });
 
 app.get('/getEntries', (req, res, next) =>{
@@ -212,6 +212,12 @@ app.get('/badDayCount',(req,res,next) =>{
        negativeEmotions: {$exists: true, $ne: []},
            positiveEmotions: {$exists: true, $size: 0}
        }).then(c => res.send({badDayCount: c}));
+   }
+});
+
+app.get('/getAllEntries',(req,res,next) =>{
+   if(req.user === undefined){res.send({text: 'not authorized!'});}else{
+       Entry.find({user: mongoose.Types.ObjectId(req.user.id)}).then(docs => res.send(docs));
    }
 });
 
