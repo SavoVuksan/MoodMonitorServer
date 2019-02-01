@@ -15,6 +15,7 @@ const app = express();
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4201");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
@@ -229,7 +230,27 @@ app.post('/api/postEmotion',(req,res,next) =>{
     res.send('Saved Emotion!');
 });
 
+app.post('/api/postEntryWithDate',(req,res,next) =>{
+    const {title, tags, text, positiveEmotions, negativeEmotions, createdOn} = req.body;
 
+    const entry = new Entry({
+        title,
+        tags,
+        text,
+        user: mongoose.Types.ObjectId(req.user.id),
+        createdOn: new Date(createdOn)
+    });
+    if(positiveEmotions) {
+        positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item.id)));
+    }
+    if(negativeEmotions) {
+        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item.id)));
+    }
+
+    entry.save();
+    res.send({text: 'API Entry with Date Saved!'});
+
+});
 
 
 app.listen(3000, ()=>{
