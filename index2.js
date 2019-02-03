@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const User = require('./Models/User');
 const Emotion = require('./Models/Emotion');
 const Entry = require('./Models/Entry');
