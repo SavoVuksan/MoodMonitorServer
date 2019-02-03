@@ -5,8 +5,8 @@ const EntrySchema = new mongoose.Schema({
     tags: [String],
     text: String,
     user: {type: mongoose.Schema.Types.ObjectId,  ref: 'User'},
-    positiveEmotions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Emotion'}],
-    negativeEmotions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Emotion'}],
+    positiveEmotions: [{type: mongoose.ObjectId, ref: 'Emotion'}],
+    negativeEmotions: [{type: mongoose.ObjectId, ref: 'Emotion'}],
     createdOn: {type: Date, default: Date.now}
 });
 

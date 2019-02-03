@@ -180,6 +180,7 @@ app.post('/saveEntry', (req, res, next) => {
         user: mongoose.Types.ObjectId(req.user.id)
     });
     if(positiveEmotions) {
+
         positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item.id)));
     }
     if(negativeEmotions) {
@@ -190,7 +191,7 @@ app.post('/saveEntry', (req, res, next) => {
     res.send({text: 'Entry Saved!'});
 });
 
-app.get('/getEntries', (req, res, next) =>{
+app.get('/getAllEntries', (req, res, next) =>{
     Entry.find({user: mongoose.Types.ObjectId(req.user.id)}).populate('positiveEmotions').populate('negativeEmotions').then(docs => res.send(docs)).catch(err => console.log(err));
 });
 
@@ -217,12 +218,6 @@ app.get('/badDayCount',(req,res,next) =>{
    }
 });
 
-app.get('/getAllEntries',(req,res,next) =>{
-   if(req.user === undefined){res.send({text: 'not authorized!'});}else{
-       Entry.find({user: mongoose.Types.ObjectId(req.user.id)}).then(docs => res.send(docs));
-   }
-});
-
 // API
 app.post('/api/postEmotion',(req,res,next) =>{
    const {type,name} = req.body;
@@ -238,14 +233,15 @@ app.post('/api/postEntryWithDate',(req,res,next) =>{
         title,
         tags,
         text,
-        user: mongoose.Types.ObjectId(req.user.id),
+        user: req.user.id,
         createdOn: new Date(createdOn)
     });
     if(positiveEmotions) {
-        positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item.id)));
+
+        positiveEmotions.forEach(item =>  entry.positiveEmotions.push(item));
     }
     if(negativeEmotions) {
-        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item.id)));
+        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item)));
     }
 
     entry.save();
