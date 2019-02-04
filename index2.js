@@ -118,7 +118,7 @@ app.post('/register', (req,res) =>{
 
                         newUser.save()
                             .then(user =>{
-                                res.send("User Registered!");
+                                res.send({text:"User Registered!"});
                             })
                             .catch(err => console.log(err));
                     });
@@ -197,7 +197,7 @@ app.get('/getAllEntries', (req, res, next) =>{
 
 app.get('/getLastEntry', (req, res, next) =>{
     if(req.user === undefined){res.send({text: "not authorized!"});}else {
-        Entry.findOne({user: req.user.id}).sort({createdOn: -1}).then(doc => res.send(doc)).catch(err => console.log(err));
+        Entry.findOne({user: req.user.id}).sort({createdOn: -1}).populate('positiveEmotions').populate('negativeEmotions').then(doc => res.send(doc)).catch(err => console.log(err));
     }
 });
 
@@ -238,7 +238,7 @@ app.post('/api/postEntryWithDate',(req,res,next) =>{
     });
     if(positiveEmotions) {
 
-        positiveEmotions.forEach(item =>  entry.positiveEmotions.push(item));
+        positiveEmotions.forEach(item =>  entry.positiveEmotions.push(mongoose.Types.ObjectId(item)));
     }
     if(negativeEmotions) {
         negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item)));
