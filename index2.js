@@ -181,10 +181,10 @@ app.post('/saveEntry', (req, res, next) => {
     });
     if(positiveEmotions) {
 
-        positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item.id)));
+        positiveEmotions.forEach(item => entry.positiveEmotions.push(mongoose.Types.ObjectId(item)));
     }
     if(negativeEmotions) {
-        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item.id)));
+        negativeEmotions.forEach(item => entry.negativeEmotions.push(mongoose.Types.ObjectId(item)));
     }
 
     entry.save();
