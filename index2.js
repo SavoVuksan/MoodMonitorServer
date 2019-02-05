@@ -249,6 +249,9 @@ app.post('/api/postEntryWithDate',(req,res,next) =>{
 
 });
 
+app.get('/api/message', (req,res,next) =>{
+   res.send({text: 'message'});
+});
 
 app.listen(3000, ()=>{
     console.log('Mood Monitor Server running on port 3000!');
