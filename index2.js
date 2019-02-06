@@ -22,7 +22,8 @@ app.use(function(req, res, next) {
     if(req.connection.remotePort === 4200) {
         res.header("Access-Control-Allow-Origin", `http://localhost:4200`);
     }else{
-        res.header("Access-Control-Allow-Origin", `http://localhost:80`);
+
+        res.header("Access-Control-Allow-Origin", `http://vm82.htl-leonding.ac.at`);
     }
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
