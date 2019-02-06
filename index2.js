@@ -17,10 +17,12 @@ const app = express();
 app.use(function(req, res, next) {
     console.log(req.ip.split(':').pop());
     console.log(req.connection.remotePort);
-    res.header("Access-Control-Allow-Origin", "*");
+    //res.header("Access-Control-Allow-Origin", "*");
 
-    if(req.ip.split(':').pop() === '1') {
-        res.header("Access-Control-Allow-Origin", `http://localhost:${req.connection.remotePort}`);
+    if(req.connection.remotePort === 4200) {
+        res.header("Access-Control-Allow-Origin", `http://localhost:4200`);
+    }else{
+        res.header("Access-Control-Allow-Origin", `http://localhost:80`);
     }
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
