@@ -5,4 +5,4 @@ authentication with Passport.js. It also uses the OR Mapper Mongoose.
 
 To run it you will need to install Monog DB to your PC.
 
-Download the files and run the command ```node index2.js``` in the root folder of the project
+Download the files and run the command ```node index2.js``` in the root folder of the project.
